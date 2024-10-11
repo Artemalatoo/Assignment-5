@@ -1,0 +1,61 @@
+import java.util.*;
+class StringProcessing {
+    public static boolean strong(String password) {
+        if (password.length() < 8) return false;
+        boolean upper = false;
+        boolean low = false;
+        boolean digit = false;
+        boolean special = false;
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                upper = true;
+            }
+            if (Character.isLowerCase(c)) {
+                low = true;
+            }
+            if (Character.isDigit(c)) {
+                digit = true;
+            }
+            if (!Character.isLetterOrDigit(c)) {
+                special = true;
+            }
+        }
+        return upper && low && digit && special;
+    }
+    public int calculateDigit(String sentence) {
+        int cntDigit = 0;
+        for (char c : sentence.toCharArray()) {
+            if (Character.isDigit(c)) {
+                cntDigit++;
+            }
+        }
+        return cntDigit;
+    }
+    public int calculateWords(String sentence) {
+        String[] words = sentence.trim().split("\\s+");
+        int wordCount = 0;
+        for (String word : words) {
+            if (word.matches(".*[a-zA-Z]+.*")) {
+                wordCount++;
+            }
+        }
+        return wordCount;
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter password: ");
+        String password = s.nextLine();
+        if (strong(password)) {
+            System.out.println("Password is strong");
+        } else {
+            System.out.println("Password is not");
+        }
+        StringProcessing a = new StringProcessing();
+        System.out.print("Enter a sentence: ");
+        String sentence = s.nextLine();
+        int digitCount = a.calculateDigit(sentence);
+        int wordCount = a.calculateWords(sentence);
+        System.out.println("Number of digits: " + digitCount);
+        System.out.println("Number of words: " + wordCount);
+    }
+}
