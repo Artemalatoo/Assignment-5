@@ -1,0 +1,46 @@
+Test Cases for strong(String password)
+Valid strong password:
+
+Input: "Strong1!"
+Expected Output: true
+Password too short:
+
+Input: "Short1!"
+Expected Output: false
+Missing uppercase letter:
+
+Input: "weakpassword1!"
+Expected Output: false
+Missing lowercase letter:
+
+Input: "WEAKPASSWORD1!"
+Expected Output: false
+Missing digit:
+
+Input: "StrongPassword!"
+Expected Output: false
+Missing special character:
+
+Input: "StrongPassword1"
+Expected Output: false
+Test Cases for calculateDigit(String sentence)
+No digits:
+
+Input: "Hello World!"
+Expected Output: 0
+Single digit:
+
+Input: "I have 1 cat."
+Expected Output: 1
+Multiple digits:
+
+Input: "My number is 12345."
+Expected Output: 5
+Digits with letters:
+
+Input: "Test1234 is fun!"
+Expected Output: 4
+Digits with special characters:
+
+Input: "3.14 is pi."
+Expected Output: 2
