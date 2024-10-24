@@ -1,9 +1,8 @@
-import java.util.*;
-class StringProcessing {
+public class StringProcessing {
     public static boolean strong(String password) {
         if (password.length() < 8) return false;
         boolean upper = false;
-        boolean low = false;
+        boolean lower = false;
         boolean digit = false;
         boolean special = false;
         for (char c : password.toCharArray()) {
@@ -11,7 +10,7 @@ class StringProcessing {
                 upper = true;
             }
             if (Character.isLowerCase(c)) {
-                low = true;
+                lower = true;
             }
             if (Character.isDigit(c)) {
                 digit = true;
@@ -20,16 +19,16 @@ class StringProcessing {
                 special = true;
             }
         }
-        return upper && low && digit && special;
+        return upper && lower && digit && special;
     }
     public int calculateDigit(String sentence) {
-        int cntDigit = 0;
+        int countDigit = 0;
         for (char c : sentence.toCharArray()) {
             if (Character.isDigit(c)) {
-                cntDigit++;
+                countDigit++;
             }
         }
-        return cntDigit;
+        return countDigit;
     }
     public int calculateWords(String sentence) {
         String[] words = sentence.trim().split("\\s+");
@@ -40,22 +39,5 @@ class StringProcessing {
             }
         }
         return wordCount;
-    }
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        System.out.print("Enter password: ");
-        String password = s.nextLine();
-        if (strong(password)) {
-            System.out.println("Password is strong");
-        } else {
-            System.out.println("Password is not");
-        }
-        StringProcessing a = new StringProcessing();
-        System.out.print("Enter a sentence: ");
-        String sentence = s.nextLine();
-        int digitCount = a.calculateDigit(sentence);
-        int wordCount = a.calculateWords(sentence);
-        System.out.println("Number of digits: " + digitCount);
-        System.out.println("Number of words: " + wordCount);
     }
 }
